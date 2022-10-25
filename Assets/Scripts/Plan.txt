@@ -8,3 +8,7 @@ Tutorial: create tooltips at each marker for
 Tutorial not necessary to complete
 
 add coins, unlock bonus level(s) for collecting coins
+
+Enemy: add turn-around with wall collision
+
+Fix button issue
