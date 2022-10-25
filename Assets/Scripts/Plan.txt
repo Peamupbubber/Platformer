@@ -1,0 +1,10 @@
+Tutorial: create tooltips at each marker for
+	press a / d to move
+	press space to jump
+	press left mouse to shoot enemy (moving enemy on platform)
+	collect ammo / health potions (?)
+	get green marker to complete level
+
+Tutorial not necessary to complete
+
+add coins, unlock bonus level(s) for collecting coins

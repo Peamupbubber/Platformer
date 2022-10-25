@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - Wall
+  - PewPew
+  - Enemy
+  - Collectible
+  - Ammo
+  - Health
+  - Boundry
+  - Bad Ground
+  - Goal
+  - Pause Menu
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - Bad Wall
+  - Wall
+  - Collectible
+  - Player
+  - Broken
+  - Enemy
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Collectible
+    uniqueID: 3526666373
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Broken
+    uniqueID: 4216239399
+    locked: 0
