@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,12 +11,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<string> scenesCompleted = new List<string>();
 
-    [SerializeField] public Button[] levelButtons;
+    [SerializeField] public Button[] buttons;
 
     // Start is called before the first frame update
     void Start()
     {
-        levelButtons = Button.FindObjectsOfType<Button>();
+        buttons = Button.FindObjectsOfType<Button>();
 
         DontDestroyOnLoad(gameObject);
     }
@@ -23,20 +24,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        levelButtons = Button.FindObjectsOfType<Button>();
-        foreach (string scene in scenesCompleted) {
-            int index = int.Parse(scene.Split()[1]) + 3;
-
-            Debug.Log(index);
-
-            if (index > -1 && index < (levelButtons.Length - 1) && levelButtons[index] != null)
-                levelButtons[index].interactable = true;
-        }
+        ActivateActiveButtons();
     }
 
-    public void ExitGame() {
-        //??
-        Application.Quit();
+    private void ActivateActiveButtons() {
+        buttons = Button.FindObjectsOfType<Button>();
+        foreach (string scene in scenesCompleted)
+        {
+            int lvl = int.Parse(scene.Split()[1]) + 1;
+            foreach (Button b in buttons)
+            {
+                if (b.name.Equals("Level " + lvl))
+                {
+                    b.interactable = true;
+                }
+            }
+        }
     }
 
     public void StartTutorial()
@@ -52,6 +55,11 @@ public class GameManager : MonoBehaviour
     public void StartLevel2()
     {
         scenesToLoad.Add(SceneManager.LoadSceneAsync("Level 2"));
+    }
+
+    public void StartLevel3()
+    {
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("Level 3"));
     }
 
     public void StartLevelMenu()

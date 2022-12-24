@@ -9,10 +9,8 @@ Tutorial not necessary to complete
 
 add coins, unlock bonus level(s) for collecting coins
 
-Enemy: add turn-around with wall collision
-
-Fix button issue
-
 Keys for doors / chests?
 
 Add parameters for left / right bounds of camera -- awkward rn
+
+DDOL Bug with tutorial

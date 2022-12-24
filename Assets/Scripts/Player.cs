@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown(0) && currentPew > 0)
+        if (Input.GetMouseButtonDown(0) && currentPew > 0 && Time.timeScale != 0)
         {
             float dir = facing;
             float side = 0.75f * dir;
@@ -207,7 +207,6 @@ public class Player : MonoBehaviour
 
             else if (gameManager != null) //For running without menu scenes
             {
-                Debug.Log(levelName);
                 gameManager.SendMessage("LevelCompleted", levelName);
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public int health = 5;
+    [SerializeField] public int health = 3;
     [SerializeField] public float velocity = -2.5f;
     
     [SerializeField] public LayerMask wall;
@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        edge *= transform.localScale.x;
         enemyRb = GetComponent<Rigidbody2D>();
     }
 
@@ -36,7 +37,12 @@ public class Enemy : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Linecast(start, end, wall);
 
-        if (hit.transform == null)
+        start = new Vector2(transform.position.x + xDir, transform.position.y);
+        end = start + new Vector2(-0.01f, 0f);
+
+        RaycastHit2D hit2 = Physics2D.Linecast(start, end, wall);
+
+        if (hit.transform == null || hit2.transform != null)
         {
             velocity *= -1;
         }
@@ -46,9 +52,13 @@ public class Enemy : MonoBehaviour
 
     private void CheckIfDead() {
         if (health <= 0) {
-            //Spawn a random potion on death
-            int rand = (int)Random.Range(0f, potions.Length);
-            Instantiate(potions[rand], gameObject.transform.position, Quaternion.identity);
+            //50% chance of spawning a random potion on death
+            int chance = (int)Random.Range(0f, 2f);
+            if (chance == 1)
+            {
+                int rand = (int)Random.Range(0f, potions.Length);
+                Instantiate(potions[rand], gameObject.transform.position, Quaternion.identity);
+            }
 
             Destroy(gameObject);
         }

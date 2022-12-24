@@ -20,16 +20,32 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enableCanvas();
+        EnableCanvas();
     }
 
-    void enableCanvas() {
+    private void EnableCanvas() {
         Scene currentScene = SceneManager.GetActiveScene();
         levelName = currentScene.name;
 
         if (!levelName.Equals("Start Menu") && Input.GetKeyDown(KeyCode.Escape))
         {
+            
             canvas.enabled = !canvas.enabled;
+            if (canvas.enabled == true) {
+                Time.timeScale = 0;
+            }
+            else
+                Time.timeScale = 1;
         }
+    }
+
+    public void ContinueButton() {
+        canvas.enabled = false;
+        Time.timeScale = 1;
+    }
+
+    public void ExitGame() {
+        //??
+        Application.Quit();
     }
 }
