@@ -43,9 +43,4 @@ public class PauseMenu : MonoBehaviour
         canvas.enabled = false;
         Time.timeScale = 1;
     }
-
-    public void ExitGame() {
-        //??
-        Application.Quit();
-    }
 }
